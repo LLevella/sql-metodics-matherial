@@ -1,0 +1,4 @@
+SELECT distinct on (length) film_id, title, description, release_year, length
+FROM public.film
+where rating = 'PG-13'
+order by length

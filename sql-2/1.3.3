@@ -1,0 +1,2 @@
+SELECT film_id, title, CAST(rental_rate/rental_duration as varchar) || ' $' as rental_by_date_with_money_type
+	FROM public.film;

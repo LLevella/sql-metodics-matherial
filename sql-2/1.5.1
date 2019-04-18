@@ -1,0 +1,3 @@
+SELECT film_id, title, rental_rate/rental_duration as r_by_day
+	FROM public.film
+order by r_by_day
