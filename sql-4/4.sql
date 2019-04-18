@@ -15,3 +15,6 @@ alter table public.customers
 	alter column lastName set not null,
 	add check (phone is not null),
 	add unique (phone);
+
+alter table public.customers
+	rename column phone TO contact;
