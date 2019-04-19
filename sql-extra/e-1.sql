@@ -11,6 +11,6 @@ alter table public.shipper
 
 alter table public.supply
 	add primary key (sid, pid, jid),
-	add FOREIGN KEY (sid) REFERENCES public.shipper (id) ON DELETE cascade,
-	add FOREIGN KEY (jid) REFERENCES public.job (id) ON DELETE restrict,
-	add FOREIGN KEY (pid) REFERENCES public.products (id) ON DELETE RESTRICT;
+	add FOREIGN KEY (sid) REFERENCES public.shipper (id) on delete cascade,
+	add FOREIGN KEY (jid) REFERENCES public.job (id) on delete restrict,
+	add FOREIGN KEY (pid) REFERENCES public.products (id) on delete restrict;
