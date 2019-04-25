@@ -1,0 +1,12 @@
+db.users.find ({age: {$lt : 30}});
+db.users.find ({age: {$gt : 30}});
+db.users.find ({age: {$gt : 30, $lt: 50}});
+db.users.find ({age: {$eq : 22}});
+db.users.find ({age: 22});
+db.users.find ({age: {$ne : 22}});
+db.users.find ({age: {$in : [22, 32]}});
+db.users.find ({age: {$nin : [22, 32]}});
+db.users.find ({$or : [{name: "Tom"}, {age: 22}]});
+db.users.find ({name: "Tom", $or : [{age: 22}, {languages: "german"}]});
+db.users.find ({$or : [{name: "Tom"}, {age: {$gte:30}}]});
+db.users.find ({$and : [{name: "Tom"}, {age: 32}]});

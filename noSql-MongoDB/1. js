@@ -1,0 +1,12 @@
+use test;
+db.users.save( { name: "Tom" } );
+db.users.find();
+
+use info;
+show dbs;
+db;
+show collections;
+db.stats();
+use test;
+db.stats();
+db.users.stats()
