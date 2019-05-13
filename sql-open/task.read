@@ -1,0 +1,31 @@
+1. Что должно стоять вместо [*], если мы хотим вывести всех пассажииров с именем ILYA
+SELECT distinct passenger_name
+FROM bookings.tickets
+[*]
+
+a. where passenger_name like 'ILYA%';
+b. where passenger_name = 'ILYA%';
+c. where passenger_name in 'ILYA';
+
+2.  Что должно стоять вместо [*], если мы считаем максимальную стоимость брони?
+SELECT [*]
+FROM bookings.bookings;
+
+a. count(total_amount)
+b. sum(total_amount)
+c. max(total_amount)
+
+3. ER - диаграмма перелетов приведена на рисунке: diagram.png
+Мы написали запрос, который позволит посчитать колличество мест в разных моделях самолетов. Какое соединение таблиц нужно использовать
+
+SELECT count(seat_no), model
+FROM bookings.aircrafts ba
+[*] join bookings.seats bs
+on ba.aircraft_code = bs.aircraft_code
+group by model
+
+a. inner
+b. left
+c. cross
+d. full
+e. right
