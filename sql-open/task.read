@@ -15,7 +15,7 @@ a. count(total_amount)
 b. sum(total_amount)
 c. max(total_amount)
 
-3. ER - диаграмма перелетов приведена на рисунке: diagram.png
+3. ER - диаграмма перелетов приведена на рисунке: https://github.com/LLevella/sql-metodics-matherial/blob/master/sql-open/diagram.png
 Мы написали запрос, который позволит посчитать колличество мест в разных моделях самолетов. Какое соединение таблиц нужно использовать
 
 SELECT count(seat_no), model
