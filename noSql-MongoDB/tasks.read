@@ -1,3 +1,7 @@
+Терминалы:
+https://www.mplay.run/mongodb-online-terminal
+https://www.tutorialspoint.com/mongodb_terminal_online.php
+
 1. Создайте БД test
 - use  имя_коллекции - установит нужную базу данных в качестве текущей, если ее нет - создаст
 - db - команда поможет узнать, какая БД текущая
