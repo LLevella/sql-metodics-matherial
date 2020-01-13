@@ -1,0 +1,67 @@
+4 ====
+CREATE OR REPLACE VIEW public.custrent
+AS WITH r AS (
+         SELECT rental.rental_id,
+            rental.rental_date,
+            rental.inventory_id,
+            rental.customer_id,
+            rental.return_date,
+            rental.staff_id,
+            rental.last_update,
+            row_number() OVER (PARTITION BY rental.customer_id ORDER BY rental.rental_date DESC) AS rnum
+           FROM rental
+        )
+ SELECT c.first_name,
+    c.last_name,
+    c.email,
+    film.title
+   FROM r
+     JOIN customer c USING (customer_id)
+     JOIN inventory USING (inventory_id)
+     JOIN film USING (film_id)
+  WHERE r.rnum = 1;
+  
+ CREATE OR REPLACE VIEW public.fa
+AS SELECT actor.first_name,
+    actor.last_name,
+    film.title,
+    count(film.film_id) OVER (PARTITION BY actor.actor_id) AS cnt
+   FROM film
+     JOIN film_actor USING (film_id)
+     JOIN actor USING (actor_id)
+5 === 
+CREATE MATERIALIZED VIEW public.custrentmat
+TABLESPACE pg_default
+AS WITH r AS (
+         SELECT rental.rental_id,
+            rental.rental_date,
+            rental.inventory_id,
+            rental.customer_id,
+            rental.return_date,
+            rental.staff_id,
+            rental.last_update,
+            row_number() OVER (PARTITION BY rental.customer_id ORDER BY rental.rental_date DESC) AS rnum
+           FROM rental
+        )
+ SELECT c.first_name,
+    c.last_name,
+    c.email,
+    film.title
+   FROM r
+     JOIN customer c USING (customer_id)
+     JOIN inventory USING (inventory_id)
+     JOIN film USING (film_id)
+  WHERE r.rnum = 1
+WITH NO DATA;
+REFRESH MATERIALIZED VIEW avrent;
+
+CREATE MATERIALIZED VIEW public.avrent
+TABLESPACE pg_default
+AS SELECT category.name,
+    avg(film.rental_duration) AS avg_rental
+   FROM film
+     JOIN film_category USING (film_id)
+     JOIN category USING (category_id)
+  GROUP BY category.name
+WITH NO DATA;
+
