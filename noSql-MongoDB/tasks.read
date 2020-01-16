@@ -34,22 +34,18 @@ db.createCollection(имя_коллекции)
   { firstname: "Ivan",
   lastname: "Vetrov",
   age: 16,
-  subjects: ["physics", "anatomy"] }
+  subjects: ["physics", "anatomy"] },
+  {
+  firstname: "Ivan",
+  lastname: "Alexeev",
+  age: 24,
+  subjects: ["chemistry", "literature"]
+  }
   ]
  - db.users.insertMany([список документов]) - позволяет добавить несколько документов
  
  3.1.  Добавьте несколько студентов на выбор:
  - db.users.insertMany([список документов]) - позволяет добавить несколько документов
- - проверим db.имя_коллекции.find() или с форматированным выводом db.имя_коллекции.find().pretty()
- 
- 3.2. Создайте документ с информацией о студенте и добавьте его в коллекцию:
- { firstname: "Ivan",
-  lastname: "Alexeev",
-  age: 24,
-  subjects: ["chemistry", "literature"] }
-  
- - document=(документ) - создает документ
- - db.имя_коллекции.insert(документ) - добавляет документ в БД
  - проверим db.имя_коллекции.find() или с форматированным выводом db.имя_коллекции.find().pretty()
  
  4. Вывести всю информацию за исключением возраста всех студентов с именем Andrey 
