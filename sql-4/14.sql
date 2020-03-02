@@ -1,9 +1,9 @@
-Если предложение PARTITION BY отсутствует, то агрегатные функции применяются ко всему результирующему набору строк запроса.
-В отличие от классической группировки, где мы получаем на каждую группу одну строку, 
-которая может содержать агрегатные значения, подсчитанные для каждой такой группы, з
-десь мы можем добавить агрегат к детализированным (несгруппированным) строкам. 
-Рассмотрим несколько примеров использования оконных функций.
-1 ====
+-- Если предложение PARTITION BY отсутствует, то агрегатные функции применяются ко всему результирующему набору строк запроса.
+-- В отличие от классической группировки, где мы получаем на каждую группу одну строку, 
+-- которая может содержать агрегатные значения, подсчитанные для каждой такой группы, з
+-- десь мы можем добавить агрегат к детализированным (несгруппированным) строкам. 
+-- Рассмотрим несколько примеров использования оконных функций.
+-- 1 ====
 select film.title, actor.first_name||' '||actor.last_name, count(film_id) over(partition by actor_id) as films_cnt 
 from film 
 join film_actor 
@@ -22,7 +22,7 @@ using(inventory_id)
 join film
 using(film_id)
 
-2 ====
+-- 2 ====
 with staff_rental as  (
 select staff.first_name|| ' ' || staff.last_name as fio, rental_id
 from staff
@@ -44,7 +44,7 @@ join film_category
 using(category_id)
 join film 
 using(film_id)
-3 ===
+-- 3 ===
 with recursive factorial as(
  select 1 as n, 1 as fn
  union all
@@ -107,7 +107,7 @@ WITH RECURSIVE r AS (
 )
 SELECT * FROM r;
 
-4 ====
+-- 4 ====
 CREATE OR REPLACE VIEW public.custrent
 AS WITH r AS (
          SELECT rental.rental_id,
@@ -138,7 +138,7 @@ AS SELECT actor.first_name,
    FROM film
      JOIN film_actor USING (film_id)
      JOIN actor USING (actor_id)
-5 === 
+-- 5 === 
 CREATE MATERIALIZED VIEW public.custrentmat
 TABLESPACE pg_default
 AS WITH r AS (
